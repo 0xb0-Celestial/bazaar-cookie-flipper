@@ -27,9 +27,12 @@ def startup(): # some config needed at script startup
 
 startup()
 
-f = 0 # idk why this is here, i think it helps?
+# idk why this is here, i think it helps?
+f=0
+amount=0
 def ststage(): # 1st stage for buying cookies
-    global f # local variable to check if script has ran once or not
+     # local variable to check if script has ran once or not
+    global f, amount
     if f == 0:
         print(f"{Fore.LIGHTWHITE_EX}Please select how many {Fore.YELLOW}Cookies {Fore.LIGHTWHITE_EX}you want to buy.")
         print(f"{Fore.LIGHTRED_EX}1 = Just one! {Fore.LIGHTWHITE_EX}|{Fore.LIGHTMAGENTA_EX} 2 = A half-dozen! (6) {Fore.LIGHTWHITE_EX}|{Fore.LIGHTCYAN_EX} 3 = Get me a dozen! (12){Fore.LIGHTWHITE_EX}")
@@ -107,20 +110,20 @@ def ststage(): # 1st stage for buying cookies
             ststage()
     elif f == 1:
         def sndstage(): # 2nd stage for relisting buy/sell orders, claim orders, and returning to the 1st stage
+            global amount
             print("This is the second stage of the script.\nNow, you will have to manually press buttons.")
             z(3)
             cls()
             print("[1] to relist buy order\n[2] to relist sell order\n[3] to claim order\n[4] to return to the normal page")
             localy = 0 # local variable for a loopdy loop
             def routine(): # routine for re buying cooki
-                        if amount > 0:
-                            mc(890,400)
-                            mc(1030,430)
-                            mc(1070,430)
-                            pg.write(amount)
-                            pg.press('enter')
-                            mc(860,430)
-                            mc(960,430)
+                mc(890,400)
+                mc(1030,430)
+                mc(1070,430)
+                pg.write(str(amount))
+                mc(960,540)
+                mc(860,430)
+                mc(960,430)
             while localy == 0: # cute ahh loop
                 if keyboard.is_pressed('1'):
                     print("Option 1 selected.")
@@ -134,50 +137,50 @@ def ststage(): # 1st stage for buying cookies
                     mc(965,500)
                     print("Please now press how many cookies (if) you have claimed from the order:")
                     print("0,1,2,3,4,5,6,7,8,9")
-                    sndstage()
                     locald = 0
                     while locald != 1:
                         if keyboard.is_pressed('1'):
                             amount = amount -1
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('2'): # use switch cases for gods sakeeeeeeeeeeeeeeeeeee
+                            locald = 1
+                        elif keyboard.is_pressed('2'): # use switch cases for gods sakeeeeeeeeeeeeeeeeeee
                             amount = amount -2
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('3'):
+                            locald = 1
+                        elif keyboard.is_pressed('3'):
                             amount = amount -3
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('4'):
+                            locald = 1
+                        elif keyboard.is_pressed('4'):
                             amount = amount -4
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('5'):
+                            locald = 1
+                        elif keyboard.is_pressed('5'):
                             amount = amount -5
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('6'):
+                            locald = 1
+                        elif keyboard.is_pressed('6'):
                             amount = amount -6
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('7'):
+                            locald = 1
+                        elif keyboard.is_pressed('7'):
                             amount = amount -7
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('8'):
+                            locald = 1
+                        elif keyboard.is_pressed('8'):
                             amount = amount -8
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('9'): #
+                            locald = 1
+                        elif keyboard.is_pressed('9'): #
                             amount = amount -9
-                            locald = 1
                             routine()
-                        if keyboard.is_pressed('0'):
                             locald = 1
+                        elif keyboard.is_pressed('0'):
                             routine()
+                            locald = 1
                     pg.press('esc')
                     localy = 1
+                    sndstage()
 
                 if keyboard.is_pressed('2'):
                     print("Option 2 selected.")
@@ -211,11 +214,10 @@ def ststage(): # 1st stage for buying cookies
                     print("Option 4 selected.")
                     z(2)
                     cls()
-                    sndstage.bye = 0 # this is returniiiiiiiiiiiiiiiiing
+                     # this is returniiiiiiiiiiiiiiiiing
                     localy = 1
         sndstage()
-        if sndstage.bye == 0:
-            f = 0
-            ststage()
+        f = 0
+        ststage()
 
 ststage()

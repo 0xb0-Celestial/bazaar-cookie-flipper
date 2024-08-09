@@ -9,7 +9,7 @@ def mc(x, y): # ease of access :yawn:
     z(1)
 def mt(x, y): # ease of access :yawn:
 
-    pg.moveTo*(x, y)
+    pg.moveTo(x, y)
     z(1)
 def openbz(): # ease of access :yawn:
     pg.press('t')
